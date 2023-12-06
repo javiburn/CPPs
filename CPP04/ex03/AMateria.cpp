@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:33:20 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/06 18:27:52 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/06 19:43:52 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ void AMateria::use(ICharacter& target)
 }
 
 void AMateria::setType(std::string type){
+	std::cout << "a" << std::endl;
 	this->type = type;
+	std::cout << this->type << std::endl;
 }
