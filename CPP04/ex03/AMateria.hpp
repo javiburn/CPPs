@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:33:46 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/11/29 17:14:06 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/06 18:27:59 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	AMateria& operator=(const AMateria& materia);
 	~AMateria(void);
 	std::string const& getType(void) const;
-
+	void setType(std::string type);
 	virtual AMateria* clone() const = 0;
 	virtual void use(ICharacter& target);
 };

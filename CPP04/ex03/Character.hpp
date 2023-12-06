@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:56:12 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/11/30 16:02:13 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:03:19 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 class Character: public ICharacter{
 	private:
 		std::string name;
-		AMateria	*(slots[4]);
+		AMateria*	slots[4];
 	public:
 		Character(void);
+		Character(std::string name);
 		Character(const Character& character);
 		Character& operator=(const Character& character);
 		~Character(void);

@@ -6,13 +6,15 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:44:46 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/11/29 18:21:28 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/06 18:07:52 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
+#include "ICharacter.hpp"
 
 Cure::Cure(void){
+	this->type = "cure";
 	return;
 }
 

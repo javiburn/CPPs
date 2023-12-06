@@ -6,7 +6,7 @@
 #    By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 18:28:03 by jsarabia          #+#    #+#              #
-#    Updated: 2023/11/29 18:21:03 by jsarabia         ###   ########.fr        #
+#    Updated: 2023/12/06 17:39:56 by jsarabia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJS = $(SRC:.cpp=.o)
 
 CC = c++
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98 #-g3 -fsanitize=address
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g3 -fsanitize=address
 
 all: $(NAME)
 	@printf "$(NAME) compiled\n"
