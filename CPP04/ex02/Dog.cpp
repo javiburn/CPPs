@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:48:38 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/07 15:42:32 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:44:39 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ Dog::Dog(void): Animal("Dog"){
 }
 
 Dog::Dog(const Dog& dog): Animal("Dog"){
-	std::cout << "Dog's copy constructor has been called" << std::endl;
 	if (this->brain)
 		delete this->brain;
 	this->brain = new Brain();
