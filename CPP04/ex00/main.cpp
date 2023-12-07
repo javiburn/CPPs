@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:23:45 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/07 15:38:47 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:17:04 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,10 @@ const WrongAnimal* p = new WrongCat();
 std::cout << wrong->getType() << " " << std::endl;
 wrong->makeSound();
 p->makeSound();
+delete meta;
+delete j;
+delete cat;
+delete wrong;
+delete p;
 return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:24:08 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/11/30 14:55:22 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:16:03 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 	Animal(void);
 	Animal(std::string type);
 	Animal(const Animal& animal);
-	~Animal(void);
+	virtual ~Animal(void);
 	Animal& 	operator=(const Animal& animal);
 	virtual void		makeSound(void) const;
 	void		setType(std::string type);
