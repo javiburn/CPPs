@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:37:30 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/11/30 14:47:57 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:39:11 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ Cat::Cat(void): Animal("Cat"){
 	return;
 }
 
-Cat::Cat(const Cat& cat){
+Cat::Cat(const Cat& cat): Animal("Cat"){
+	std::cout << "Cat's copy constructor has been called" << std::endl;
 	this->type = cat.type;
 	return;
 }
