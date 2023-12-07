@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:37:30 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/01 13:49:32 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:42:20 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ Cat::Cat(void): Animal("Cat"){
 	return;
 }
 
-Cat::Cat(const Cat& cat){
+Cat::Cat(const Cat& cat): Animal("Cat"){
+	std::cout << "Cat's copy constructor has been called" << std::endl;
 	if (this->brain)
 		delete this->brain;
 	this->brain = new Brain();
