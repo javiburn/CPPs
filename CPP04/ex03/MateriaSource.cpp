@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:41:10 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/07 14:53:19 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:01:19 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	MateriaSource::learnMateria(AMateria* mat){
 		return;
 	}
 	this->slots[i] = mat->clone();
+	delete mat;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
@@ -59,8 +60,8 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 	while (i > -1)
 	{
 		if (this->slots[i] && this->slots[i]->getType() == type)
-			return this->slots[i]->clone();
-			//return this->slots[i];
+			//return this->slots[i]->clone();
+			return this->slots[i];
 		i--;
 	}
 	return 0;

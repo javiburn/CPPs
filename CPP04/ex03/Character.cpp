@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:58:35 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/07 14:52:25 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:09:09 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@ Character::Character(void){
 	for (int i = 0; i < 4; i++){
 		this->slots[i] = NULL;
 	}
+	for (int i = 0; i < 50; i++){
+		this->unequipped[i] = NULL;
+	}
 	return;
 }
 Character::Character(std::string name){
 	for (int i = 0; i < 4; i++){
 		this->slots[i] = NULL;
+	}
+	for (int i = 0; i < 50; i++){
+		this->unequipped[i] = NULL;
 	}
 	this->name = name;
 	return;
@@ -43,6 +49,8 @@ Character& Character::operator=(const Character& character){
 Character::~Character(void){
 	for (int i = 0; i < 3 && this->slots[i]; i++)
 		delete this->slots[i];
+	for (int i = 0; i < 50 && this->slots[i]; i++)
+		delete this->unequipped[i];
 	return;
 }
 
@@ -83,6 +91,13 @@ void Character::unequip(int idx){
 	}
 	i--;
 	if (i < idx)
+	{
 		std::cout << "Unable to perform this action because the selected item is not in the inventory" << std::endl;
+		return;
+	}
+	i = 0;
+	while (i < 50 && this->unequipped[i])
+		i++;
+	this->unequipped[i] = this->slots[idx];
 	this->slots[idx] = NULL;
 }
