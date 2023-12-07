@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:58:35 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/06 19:47:33 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:52:25 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ Character& Character::operator=(const Character& character){
 }
 
 Character::~Character(void){
+	for (int i = 0; i < 3 && this->slots[i]; i++)
+		delete this->slots[i];
 	return;
 }
 
@@ -65,6 +67,7 @@ void Character::use(int idx, ICharacter& target){
 	while (i < 3 && this->slots[i]){
 		i++;
 	}
+	i--;
 	if (i < idx)
 		std::cout << "Unable to perform this action because the selected item is not in the inventory" << std::endl;
 	else
@@ -78,7 +81,8 @@ void Character::unequip(int idx){
 	while (this->slots[i]){
 		i++;
 	}
+	i--;
 	if (i < idx)
 		std::cout << "Unable to perform this action because the selected item is not in the inventory" << std::endl;
-	this->slots[i] = NULL;
+	this->slots[idx] = NULL;
 }
