@@ -6,13 +6,14 @@
 #    By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 14:02:12 by jsarabia          #+#    #+#              #
-#    Updated: 2023/12/08 14:03:49 by jsarabia         ###   ########.fr        #
+#    Updated: 2023/12/08 18:01:37 by jsarabia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = bureau
 
-SRC =	main.cpp
+SRC =	main.cpp \
+		Bureaucrat.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

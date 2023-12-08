@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:04:00 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/08 14:04:29 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/08 19:25:02 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int main()
 {
-	h
+	Bureaucrat joseluis("José Luis", 200);
+	return 0;
 }
