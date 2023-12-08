@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:05:31 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/08 14:10:43 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/08 17:48:05 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ class Bureucrat{
 		const std::string	name;
 		int					grade;
 	public:
+		Bureucrat();
+		~Bureucrat();
 };
 
 #endif
