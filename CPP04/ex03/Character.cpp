@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:58:35 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/07 15:09:09 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:35:01 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ Character::Character(std::string name){
 Character::Character(const Character& character){
 	this->name = character.name;
 	for (int i = 0; character.slots[i]; i++)
-		this->slots[i] = character.slots[i];
+		this->slots[i] = character.slots[i]->clone();
 	return;
 }
 
 Character& Character::operator=(const Character& character){
 	this->name = character.name;
 	for (int i = 0; character.slots[i]; i++)
-		this->slots[i] = character.slots[i];
+		this->slots[i] = character.slots[i]->clone();
 	return *this;
 }
 
