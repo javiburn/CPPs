@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:04:00 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/12 15:14:31 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:25:49 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int main(void)
 	jose.decrementGrade(900);
 	std::cout << jose << std::endl;
 	Bureaucrat ramon("Ramón", 1000);
+	Bureaucrat pepe(ramon);
 	std::cout << ramon << std::endl;
+	std::cout << pepe << std::endl;
 	return 0;
 }

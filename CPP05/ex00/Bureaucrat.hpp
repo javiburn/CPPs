@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:05:31 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/11 19:36:17 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:21:26 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Bureaucrat{
 		Bureaucrat();
 	public:
 		Bureaucrat(const std::string name, int grade);
+		Bureaucrat(const Bureaucrat& bur);
+		Bureaucrat& operator=(const Bureaucrat& bur);
 		~Bureaucrat();
 		int	getGrade(void);
 		void	incrementGrade(void);

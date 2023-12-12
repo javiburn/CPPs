@@ -6,13 +6,14 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:06:40 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/12 15:12:42 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:24:56 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(void){
+	std::cout << "Default constructor called" << std::endl;
 	try
 	{
 		if (grade < 0)
@@ -27,6 +28,7 @@ Bureaucrat::Bureaucrat(void){
 }
 
 Bureaucrat::Bureaucrat(const std::string new_name, int grade): name(new_name), grade(grade){
+	std::cout << "Default constructor called" << std::endl;
 	try
 	{
 		if (grade < 0)
@@ -40,7 +42,41 @@ Bureaucrat::Bureaucrat(const std::string new_name, int grade): name(new_name), g
 	}
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat& bur): name(bur.name){
+	std::cout << "Copy constructor called" << std::endl;
+	try
+	{
+		if (grade < 0)
+			throw GradeTooHighException();
+		else if (grade > 150)
+			throw GradeTooLowException();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	this->grade = bur.grade;
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& bur){
+	std::cout << "Copy assignment operator called" << std::endl;
+	try
+	{
+		if (grade < 0)
+			throw GradeTooHighException();
+		else if (grade > 150)
+			throw GradeTooLowException();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	this->grade = bur.grade;
+	return *this;
+}
+
 Bureaucrat::~Bureaucrat(void){
+	std::cout << "Default destructor called" << std::endl;
 	return;
 }
 
