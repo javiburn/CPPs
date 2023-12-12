@@ -6,18 +6,24 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:06:40 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/11 19:44:53 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:12:42 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(void){
-	if (this->grade < 1)
-		throw GradeTooHighException();
-	if (this->grade > 150)
-		throw GradeTooLowException();
-	return;
+	try
+	{
+		if (grade < 0)
+			throw GradeTooHighException();
+		else if (grade > 150)
+			throw GradeTooLowException();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 Bureaucrat::Bureaucrat(const std::string new_name, int grade): name(new_name), grade(grade){
@@ -73,7 +79,6 @@ void	Bureaucrat::incrementGrade(int num){
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
 }
 
 void	Bureaucrat::decrementGrade(void){
