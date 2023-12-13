@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:06:40 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/12 17:52:50 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:17:12 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ Bureaucrat::~Bureaucrat(void){
 	return;
 }
 
-int	Bureaucrat::getGrade(void){
+int	Bureaucrat::getGrade(void) const{
 	return this->grade;
 }
 
-std::string	Bureaucrat::getName(void){
+std::string	Bureaucrat::getName(void) const{
 	return this->name;
 }
 
@@ -145,6 +145,14 @@ void	Bureaucrat::decrementGrade(int num){
 	}
 }
 
+void	Bureaucrat::signForm(AForm& form){
+	if (form.getSignatureGrade() < this->grade)
+		std::cout << this->name << " could not sign " << form.getName() << " because its grade is too low." << std::endl;
+	else
+		std::cout << this->name << " signed " << form.getName() << "." << std::endl;
+	return;
+}
+
 const char	*Bureaucrat::GradeTooHighException::what() const throw(){
 	return "The grade is too high!";
 }
@@ -153,7 +161,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw(){
 	return "The grade is too low!";
 }
 
-std::ostream& operator<<(std::ostream& stream, Bureaucrat& bur){
+std::ostream& operator<<(std::ostream& stream, const Bureaucrat& bur){
 	if (bur.getGrade() > 0 && bur.getGrade() < 151)
 		stream << bur.getName() << ", bureaucrat grade " << bur.getGrade() << ".";
 	else
