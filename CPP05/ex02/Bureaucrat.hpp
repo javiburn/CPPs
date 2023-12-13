@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:05:31 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/13 17:36:27 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:56:26 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class Bureaucrat{
 		void		decrementGrade(int num);
 		std::string	getName(void) const;
 		void		signForm(AForm& form);
+		void		executeForm(AForm& form);
 		class GradeTooHighException: public std::exception{
 			public:
 				const char*	what() const throw();

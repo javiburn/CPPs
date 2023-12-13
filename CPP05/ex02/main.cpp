@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:04:00 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/13 17:54:31 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:57:59 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int main(void)
 	han.beSigned(jose);
 	jose.signForm(han);
 	han.execute(jose);
+	Bureaucrat hector = Bureaucrat("Héctor", 100);
+	hector.executeForm(han);
 	std::cout << pepe << std::endl;
 	return 0;
 }
