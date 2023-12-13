@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:05:31 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/13 17:17:15 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:36:27 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fstream>
 # include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat{
 	private:

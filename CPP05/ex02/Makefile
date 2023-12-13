@@ -6,7 +6,7 @@
 #    By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/12 17:22:37 by jsarabia          #+#    #+#              #
-#    Updated: 2023/12/13 14:27:42 by jsarabia         ###   ########.fr        #
+#    Updated: 2023/12/13 17:36:05 by jsarabia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = bureaucracy
 SRC =	main.cpp \
 		AForm.cpp \
 		Bureaucrat.cpp \
-		ShrubberyCreationForm.cpp
+		RobotomyRequestForm.cpp \
+		ShrubberyCreationForm.cpp \
 
 OBJS = $(SRC:.cpp=.o)
 

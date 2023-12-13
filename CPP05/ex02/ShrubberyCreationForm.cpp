@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 17:37:38 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/13 16:33:17 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:44:43 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	Shrubbery::execute(Bureaucrat const & executor) const{
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 }
 
