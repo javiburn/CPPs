@@ -6,7 +6,7 @@
 #    By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/12 17:22:37 by jsarabia          #+#    #+#              #
-#    Updated: 2023/12/13 17:36:05 by jsarabia         ###   ########.fr        #
+#    Updated: 2023/12/13 17:49:04 by jsarabia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC =	main.cpp \
 		Bureaucrat.cpp \
 		RobotomyRequestForm.cpp \
 		ShrubberyCreationForm.cpp \
+		PresidentialPardonForm.cpp \
 
 OBJS = $(SRC:.cpp=.o)
 
