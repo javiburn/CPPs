@@ -6,25 +6,31 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:08:35 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/13 18:47:22 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:08:05 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 
 Intern::Intern(void){
+	std::cout << "Intern ---> Default constructor called" << std::endl;
 	return;
 }
 
-/*Intern::Intern(const Intern& intern){
+Intern::Intern(const Intern& intern){
+	std::cout << "Intern ---> Copy constructor called" << std::endl;
+	*this = intern;
 	return;
 }
 
 Intern& Intern::operator=(const Intern& intern){
+	std::cout << "Intern ---> Copy assignment operator called" << std::endl;
+	(void)intern;
 	return *this;
-}*/
+}
 
 Intern::~Intern(void){
+	std::cout << "Intern ---> Default destructor called" << std::endl;
 	return;
 }
 
@@ -52,6 +58,6 @@ AForm*	Intern::makeForm(std::string name, std::string target){
 			return aux;
 		}
 	}
-	std::cout << "The form selected is invalid" << std::endl;
+	std::cout << "The selected form is invalid" << std::endl;
 	return 0;
 }

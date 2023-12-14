@@ -6,32 +6,37 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:50:41 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/13 17:52:50 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:10:16 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
 President::President(void): name ("President"), target("So-and-so"), req_sign(25), req_exec(5){
+	std::cout << "President ---> Default constructor called" << std::endl;
 	return;
 }
 
 President::President(const std::string target): name ("President"), target(target), req_sign(25), req_exec(5){
+	std::cout << "President ---> Default constructor called" << std::endl;
 	this->is_signed = false;
 	return;
 }
 
-President::President(const President &shrub): name(shrub.name), target(shrub.target), req_sign(25), req_exec(5){
-	this->is_signed = shrub.is_signed;
+President::President(const President &presi): name(presi.name), target(presi.target), req_sign(25), req_exec(5){
+	std::cout << "President ---> Copy constructor called" << std::endl;
+	this->is_signed = presi.is_signed;
 	return;
 }
 
 President& President::operator=(const President& shrub){
+	std::cout << "President ---> Copy assignment operator called" << std::endl;
 	this->is_signed = shrub.is_signed;
 	return *this;
 }
 
 President::~President(void){
+	std::cout << "President ---> Default destructor called" << std::endl;
 	return;
 }
 

@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:04:00 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/13 18:53:17 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:14:32 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main()
 {
 	Intern someRandomIntern;
 	AForm* rrf;
-	Bureaucrat javi("Javi", 6);
+	Bureaucrat javi("Javi", 5);
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 	rrf->beSigned(javi);
 	rrf->execute(javi);
@@ -24,5 +24,6 @@ int main()
 	rrf = someRandomIntern.makeForm("presidential pardon", "Alex");
 	rrf->beSigned(javi);
 	rrf->execute(javi);
+	delete rrf;
 	return 0;
 }

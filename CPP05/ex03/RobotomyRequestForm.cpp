@@ -6,32 +6,37 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:20:49 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/13 17:44:31 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:11:16 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
 Robotomy::Robotomy(void): name ("Robotomy"), target("So-and-so"), req_sign(72), req_exec(45){
+	std::cout << "Robotomy ---> Default constructor called" << std::endl;
 	return;
 }
 
 Robotomy::Robotomy(const std::string target): name ("Robotomy"), target(target), req_sign(72), req_exec(45){
+	std::cout << "Robotomy ---> Default constructor called" << std::endl;
 	this->is_signed = false;
 	return;
 }
 
 Robotomy::Robotomy(const Robotomy &shrub): name(shrub.name), target(shrub.target), req_sign(72), req_exec(45){
+	std::cout << "Robotomy ---> Copy constructor called" << std::endl;
 	this->is_signed = shrub.is_signed;
 	return;
 }
 
 Robotomy& Robotomy::operator=(const Robotomy& shrub){
+	std::cout << "Robotomy ---> Copy assignment operator called" << std::endl;
 	this->is_signed = shrub.is_signed;
 	return *this;
 }
 
 Robotomy::~Robotomy(void){
+	std::cout << "Robotomy ---> Default destructor called" << std::endl;
 	return;
 }
 
@@ -94,7 +99,7 @@ void	Robotomy::execute(Bureaucrat const & executor) const{
 			if (check == 0)
 				std::cout << this->target << " has been successfully robotomized" << std::endl;
 			else
-				std::cout << "Oh, no! Tho robotomy of " << this->target << " has failed!" << std::endl;
+				std::cout << "Oh, no! " << this->target << "'s robotomy has failed!" << std::endl;
 		}
 	}
 	catch(const std::exception& e)

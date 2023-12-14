@@ -6,32 +6,37 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 17:37:38 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/13 17:44:43 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:11:58 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 Shrubbery::Shrubbery(void): name ("Shrubbery"), target("So-and-so"), req_sign(145), req_exec(137){
+	std::cout << "Shrubbery ---> Default constructor called" << std::endl;
 	return;
 }
 
 Shrubbery::Shrubbery(const std::string target): name ("Shrubbery"), target(target), req_sign(145), req_exec(137){
+	std::cout << "Shrubbery ---> Default constructor called" << std::endl;
 	this->is_signed = false;
 	return;
 }
 
 Shrubbery::Shrubbery(const Shrubbery &shrub): name(shrub.name), target(shrub.target), req_sign(145), req_exec(137){
+	std::cout << "Shrubbery ---> Copy constructor called" << std::endl;
 	this->is_signed = shrub.is_signed;
 	return;
 }
 
 Shrubbery& Shrubbery::operator=(const Shrubbery& shrub){
+	std::cout << "Shrubbery ---> Copy assignment operator called" << std::endl;
 	this->is_signed = shrub.is_signed;
 	return *this;
 }
 
 Shrubbery::~Shrubbery(void){
+	std::cout << "Shrubbery ---> Default destructor called" << std::endl;
 	return;
 }
 
