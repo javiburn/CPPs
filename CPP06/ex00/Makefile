@@ -6,13 +6,14 @@
 #    By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 17:12:31 by jsarabia          #+#    #+#              #
-#    Updated: 2023/12/14 18:31:31 by jsarabia         ###   ########.fr        #
+#    Updated: 2023/12/15 15:58:12 by jsarabia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = convert
 
 SRC =	main.cpp \
+		ScalarConverter.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
