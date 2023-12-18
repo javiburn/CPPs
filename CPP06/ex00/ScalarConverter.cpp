@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:26:46 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/18 15:25:56 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:35:33 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,10 @@ int	checkType(std::string str){
 		else
 			return -1;
 	}
+	if (str == "-inf" || str == "+inf")
+		return 3;
+	if (str == "-inff" || str == "+inff")
+		return 2;
 	for (int i = 0; i < int(str.length()); i++){
 		if (!isdigit(str[i])){
 			if (i == int(str.length()) - 1 && str[i] == 'f')
@@ -127,10 +131,6 @@ int	checkType(std::string str){
 				return -1;
 		}
 	}
-	if (str == "-inf" || str == "+inf")
-		return 3;
-	if (str == "-inff" || str == "+inff")
-		return 2;
 	if (!str[aux + 1] || (str[aux + 1] < '0' || str[aux + 1] > '9'))
 		return -1;
 	if (str.back() == 'f')
@@ -142,6 +142,14 @@ int	checkType(std::string str){
 	return 1;
 }
 
+void	showError(void)
+{
+	std::cout << "char: " << "Non displayable"  << std::endl;
+	std::cout << "int: " << "Non displayable"  << std::endl;
+	std::cout << "float: " << "Non displayable"  << std::endl;
+	std::cout << "double: " << "Non displayable"  << std::endl;
+}
+
 void	ScalarConverter::convert(std::string representation){
 	std::string type[] = {"char", "int", "float", "double"};
 	int n = 0;
@@ -150,6 +158,11 @@ void	ScalarConverter::convert(std::string representation){
 	if (n < 0)
 	{
 		std::cerr << "Invalid input" << std::endl;
+		return;
+	}
+	if (representation.length() > 308)
+	{
+		showError();
 		return;
 	}
 	f[n](representation);
