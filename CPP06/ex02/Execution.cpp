@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:43:24 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/18 18:34:08 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:03:42 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,40 @@ void Execution::identify(Base* p){
 	return;
 }
 
+void Execution::identify(Base& p){
+	try{
+		A& auxA = dynamic_cast<A&>(p);
+		std::cout << "A" << std::endl;
+		(void)auxA;
+		return;
+	}
+	catch (std::exception& e){
+	}
+	try{
+		B& auxB = dynamic_cast<B&>(p);
+		std::cout << "B" << std::endl;
+		(void)auxB;
+		return;
+	}
+	catch (std::exception& e){
+	}
+	try{
+		C& auxC = dynamic_cast<C&>(p);
+		std::cout << "C" << std::endl;
+		(void)auxC;
+		return;
+	}
+	catch (std::exception& e){
+	}
+	try{
+		throw BadCastException();
+	}
+	catch (std::exception& e){
+		std::cerr << e.what() << std::endl;
+	}
+	return;
+}
+
+const char* Execution::BadCastException::what() const throw(){
+	return "Illegal cast";
+}

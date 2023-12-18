@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:44:16 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/18 17:48:46 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:53:46 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 
 # include <iostream>
+# include <exception>
 
 #include "Base.hpp"
 #include "A.hpp"
@@ -30,6 +31,11 @@ class Execution{
 	public:
 		static Base* generate(void);
 		static void identify(Base* p);
+		static void identify(Base& p);
+		class BadCastException: public std::exception{
+			public:
+				const char *what() const throw();
+		};
 };
 
 Base* generate(void);

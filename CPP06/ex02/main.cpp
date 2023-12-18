@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:00:32 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/18 18:11:15 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:56:30 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ int main()
 
 	base = Execution::generate();
 	Execution::identify(base);
+	Execution::identify(*base);
 	return 0;
 }
