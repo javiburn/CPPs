@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 17:13:31 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/14 18:51:15 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:23:36 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int main(int argc, char **argv)
 	else
 	{
 		str += argv[1];
-		std::cout << str << std::endl;
 		ScalarConverter::convert(argv[1]);
 	}
 	return 0;

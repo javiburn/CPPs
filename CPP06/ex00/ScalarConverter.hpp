@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 17:13:52 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/15 18:30:35 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:24:37 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define SCALAR_CONVERTER_HPP
 
 # include <iostream>
+# include <iomanip>
+# include <cstring>
+# include <string>
 
 class ScalarConverter{
 	private:
