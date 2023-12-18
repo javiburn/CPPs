@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:26:46 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/18 15:35:33 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:36:50 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,10 +161,7 @@ void	ScalarConverter::convert(std::string representation){
 		return;
 	}
 	if (representation.length() > 308)
-	{
-		showError();
-		return;
-	}
+		return showError();
 	f[n](representation);
 	return;
 }
