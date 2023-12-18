@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:26:46 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/18 15:36:50 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:38:10 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int	checkType(std::string str){
 		return 2;
 	if (aux > 0 && aux < str.length() - 1)
 		return 3;
-	if (!std::atoi(str.c_str()))
+	if (!std::atoi(str.c_str()) && str[0] != '0')
 			return -1;
 	return 1;
 }
