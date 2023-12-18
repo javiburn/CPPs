@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:43:24 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/18 17:49:52 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:34:08 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,27 @@ Base*	createC(void){
 
 Base* Execution::generate(void){
 	Base* (*f[])() = {&createA, &createB, &createC};
-	int random = rand() % 2;
-	std::cout << random << std::endl;
-	return (f[random]());
+	srand(time(NULL));
+	int random = rand() % 3;
+	return (*f[random])();
+}
+
+void Execution::identify(Base* p){
+	A* auxA = dynamic_cast<A*>(p);
+	if (auxA != NULL){
+		std::cout << "A" << std::endl;
+		return;
+	}
+	B* auxB = dynamic_cast<B*>(p);
+	if (auxB != NULL){
+		std::cout << "B" << std::endl;
+		return;
+	}
+	C* auxC = dynamic_cast<C*>(p);
+	if (auxC != NULL){
+		std::cout << "C" << std::endl;
+		return;
+	}
+	return;
 }
 

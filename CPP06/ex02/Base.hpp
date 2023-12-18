@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:01:05 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/18 17:43:01 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:13:33 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 class Base{
 	private:
 	public:
-		virtual ~Base(void);
+		virtual ~Base(void) {};
 };
-
-Base* generate(void);
 
 #endif
