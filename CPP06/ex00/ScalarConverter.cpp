@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:26:46 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/18 15:38:10 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:42:41 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	doubles(std::string str)
 
 int	checkType(std::string str){
 	std::size_t aux = str.find(".");
+	int count = 0;
 
 	if ((str[0] < '0' || str[0] > '9') && str[0] != '+' && str[0] != '-')
 	{
@@ -124,7 +125,13 @@ int	checkType(std::string str){
 	if (str == "-inff" || str == "+inff")
 		return 2;
 	for (int i = 0; i < int(str.length()); i++){
-		if (!isdigit(str[i])){
+		if (str[i] == '.')
+		{
+			count++;
+			if (count != 1)
+				return -1;
+		}
+		else if (!isdigit(str[i])){
 			if (i == int(str.length()) - 1 && str[i] == 'f')
 				continue;
 			else
