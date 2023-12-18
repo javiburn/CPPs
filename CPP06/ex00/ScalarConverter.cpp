@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:26:46 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/15 18:34:53 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:20:34 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,13 @@ void	ScalarConverter::convert(std::string representation){
 		return;
 	}
 	if (n == 0)
-		std::cout << "char: '" << representation[0] << "'" <<  std::endl;
-	else
-		std::cout << "char: '" << std::atoi(representation.c_str()) << "'" << std::endl;
+		std::cout << "char: \' " << representation[0] << "'" <<  std::endl;
+	else{
+		int aux = std::atoi(representation.c_str());
+		if (aux < 32 || aux > 126)
+			std::cout << "char: " << "The introduced input can not be displayed as a character"  << std::endl;
+		else
+			std::cout << "char: \'" << char(aux) << "'" << std::endl;
+	}
 	return;
 }
