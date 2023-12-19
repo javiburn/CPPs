@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:26:46 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/18 15:42:41 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/19 14:49:54 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,77 +32,87 @@ ScalarConverter::~ScalarConverter(void){
 
 void	character(std::string str)
 {
+	int i = static_cast<int>(str[0]);
+	float f = static_cast<int>(str[0]);
+	double d = static_cast<int>(str[0]);
+
 	std::cout << "char: \'" << str[0] << "'" <<  std::endl;
-	std::cout << "int: \'" << int(str[0]) << "'" <<  std::endl;
-	std::cout << "float: \'" << int(str[0]) << ".0f'" <<  std::endl;
-	std::cout << "double: \'" << int(str[0]) << ".0'" <<  std::endl;
+	std::cout << "int: \'" << i << "'" <<  std::endl;
+	std::cout << "float: \'" << f << ".0f'" <<  std::endl;
+	std::cout << "double: \'" << d << ".0'" <<  std::endl;
 }
 
 void	integer(std::string str)
 {
 	std::string max = "2147483647";
 	std::string min = "-2147483648";
-	int aux = std::atoi(str.c_str());
-	if (aux < 32 || aux > 126)
+	int i = std::atoi(str.c_str());
+	float f = std::atof(str.c_str());
+	double d = std::atof(str.c_str());
+	if (i < 32 || i > 126)
 		std::cout << "char: " << "Non displayable"  << std::endl;
 	else
-		std::cout << "char: \'" << char(aux) << "'" << std::endl;
+		std::cout << "char: \'" << static_cast<char>(i) << "'" << std::endl;
 	if (str.length() < max.length() || (strcmp(str.c_str(), max.c_str()) < 1 && str.length() == max.length()))
-		std::cout << "int: \'" << std::atoi(str.c_str()) << "'" <<  std::endl;
+		std::cout << "int: \'" << i << "'" <<  std::endl;
 	else
 		std::cout << "int: " << "Non displayable"  << std::endl;
-	std::cout << "float: \'" << std::atof(str.c_str()) << ".0f'" <<  std::endl;
-	std::cout << "double: \'" << std::atof(str.c_str()) << ".0'" <<  std::endl;
+	std::cout << "float: \'" << f << ".0f'" <<  std::endl;
+	std::cout << "double: \'" << d << ".0'" <<  std::endl;
 }
 
 void	floating(std::string str)
 {
 	std::string max = "2147483647";
 	std::string min = "-2147483648";
-	int aux = std::atoi(str.c_str());
-	if (aux < 32 || aux > 126)
+	int i = std::atoi(str.c_str());
+	float f = std::atof(str.c_str());
+	double d = std::atof(str.c_str());
+	if (i < 32 || i > 126)
 		std::cout << "char: " << "Non displayable"  << std::endl;
 	else
-		std::cout << "char: \'" << char(aux) << "'" << std::endl;
+		std::cout << "char: \'" << static_cast<char>(i) << "'" << std::endl;
 	if (str == "+inff" || str == "-inff" || str  == "nanf")
 		std::cout << "int: " << "Non displayable"  << std::endl;
 	else if (str.length() < max.length() || (strcmp(str.c_str(), max.c_str()) < 1 && str.length() == max.length()))
-		std::cout << "int: \'" << std::atoi(str.c_str()) << "'" <<  std::endl;
+		std::cout << "int: \'" << i << "'" <<  std::endl;
 	else
 		std::cout << "int: " << "Non displayable"  << std::endl;
 	if ((str.find(".") < str.length() - 1 && std::atoi(str.c_str() + str.find(".") + 1)) || str == "+inff" || str == "-inff" || str  == "nanf")
-		std::cout << "float: \'" << std::atof(str.c_str()) << "f'" <<  std::endl;
+		std::cout << "float: \'" << f << "f'" <<  std::endl;
 	else
-		std::cout << "float: \'" << std::atof(str.c_str()) << ".0f'" <<  std::endl;
+		std::cout << "float: \'" << f << ".0f'" <<  std::endl;
 	if ((str.find(".") < str.length() - 1 && std::atoi(str.c_str() + str.find(".") + 1)) || str == "+inff" || str == "-inff" || str  == "nanf")
-		std::cout << "double: \'" << std::atof(str.c_str()) << "'" <<  std::endl;
+		std::cout << "double: \'" << d << "'" <<  std::endl;
 	else
-		std::cout << "double: \'" << std::atof(str.c_str()) << ".0'" <<  std::endl;
+		std::cout << "double: \'" << d << ".0'" <<  std::endl;
 }
 
 void	doubles(std::string str)
 {
 	std::string max = "2147483647";
 	std::string min = "-2147483648";
-	int aux = std::atoi(str.c_str());
-	if (aux < 32 || aux > 126)
+	int i = std::atoi(str.c_str());
+	float f = std::atof(str.c_str());
+	double d = std::atof(str.c_str());
+	if (i < 32 || i > 126)
 		std::cout << "char: " << "Non displayable"  << std::endl;
 	else
-		std::cout << "char: \'" << char(aux) << "'" << std::endl;
+		std::cout << "char: \'" << static_cast<char>(i) << "'" << std::endl;
 	if (str == "+inf" || str == "-inf" || str  == "nan")
 		std::cout << "int: " << "Non displayable"  << std::endl;
 	else if (str.length() < max.length() || (strcmp(str.c_str(), max.c_str()) < 1 && str.length() == max.length()))
-		std::cout << "int: \'" << std::atoi(str.c_str()) << "'" <<  std::endl;
+		std::cout << "int: \'" << i << "'" <<  std::endl;
 	else
 		std::cout << "int: " << "Non displayable"  << std::endl;
 	if ((str.find(".") < str.length() - 1 && std::atoi(str.c_str() + str.find(".") + 1)) || str == "+inf" || str == "-inf" || str  == "nan")
-		std::cout << "float: \'" << std::atof(str.c_str()) << "f'" <<  std::endl;
+		std::cout << "float: \'" << f << "f'" <<  std::endl;
 	else
-		std::cout << "float: \'" << std::atof(str.c_str()) << ".0f'" <<  std::endl;
+		std::cout << "float: \'" << f << ".0f'" <<  std::endl;
 	if ((str.find(".") < str.length() - 1 && std::atoi(str.c_str() + str.find(".") + 1)) || str == "+inf" || str == "-inf" || str  == "nan")
-		std::cout << "double: \'" << std::atof(str.c_str()) << "'" <<  std::endl;
+		std::cout << "double: \'" << d << "'" <<  std::endl;
 	else
-		std::cout << "double: \'" << std::atof(str.c_str()) << ".0'" <<  std::endl;
+		std::cout << "double: \'" << d << ".0'" <<  std::endl;
 }
 
 int	checkType(std::string str){
