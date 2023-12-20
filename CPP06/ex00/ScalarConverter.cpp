@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:26:46 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/20 15:06:16 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:09:53 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,6 @@ int	checkType(std::string str){
 				return -1;
 		}
 	}
-	std::cout << aux << std::endl;
 	if (aux < str.length() && (!str[aux + 1] || (str[aux + 1] < '0' || str[aux + 1] > '9')))
 		return -1;
 	if (str.back() == 'f')
