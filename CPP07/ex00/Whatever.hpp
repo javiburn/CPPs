@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:50:34 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/20 15:51:30 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/20 16:05:16 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,22 @@ void	swap(T& first, T& second){
 	aux = first;
 	first = second;
 	second = aux;
+};
+
+template<typename T>
+T	min(T& first, T& second){
+	if (first < second)
+		return first;
+	else
+		return second;
+};
+
+template<typename T>
+T	max(T& first, T& second){
+	if (first > second)
+		return first;
+	else
+		return second;
 };
 
 #endif
