@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:26:46 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/19 14:49:54 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:06:16 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	doubles(std::string str)
 int	checkType(std::string str){
 	std::size_t aux = str.find(".");
 	int count = 0;
+	int count2 = 0;
 
 	if ((str[0] < '0' || str[0] > '9') && str[0] != '+' && str[0] != '-')
 	{
@@ -141,6 +142,11 @@ int	checkType(std::string str){
 			if (count != 1)
 				return -1;
 		}
+		else if (str[i] == '-' || str[i] == '+'){
+			count2++;
+			if (count2 != 1 || i != 0)
+				return -1;
+		}
 		else if (!isdigit(str[i])){
 			if (i == int(str.length()) - 1 && str[i] == 'f')
 				continue;
@@ -148,7 +154,8 @@ int	checkType(std::string str){
 				return -1;
 		}
 	}
-	if (!str[aux + 1] || (str[aux + 1] < '0' || str[aux + 1] > '9'))
+	std::cout << aux << std::endl;
+	if (aux < str.length() && (!str[aux + 1] || (str[aux + 1] < '0' || str[aux + 1] > '9')))
 		return -1;
 	if (str.back() == 'f')
 		return 2;
