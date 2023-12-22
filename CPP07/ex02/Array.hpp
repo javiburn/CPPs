@@ -44,15 +44,10 @@ class Array{
 			return;
 		}
 		T& operator[](int index){
-			try{
-				if (index >= this->size())
-						throw IndexTooHigh();
-				else if (index < 0)
-						throw IndexTooLow();
-			}
-			catch (std::exception& e){
-				std::cerr << e.what() << std::endl;
-			}
+			if (index >= this->size())
+				throw IndexTooHigh();
+			else if (index < 0)
+				throw IndexTooLow();
 			return this->arr[index];
 		}
 		int	size()const { return this->len; };

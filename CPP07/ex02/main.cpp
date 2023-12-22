@@ -20,7 +20,12 @@ int main(){
 	std::cout << newarr.size() << std::endl;
 	arr.setArrIndex("Hola", 0);
 	arr[6] = "Jamón";
-	arr[8] = "Jamón";
+	try{
+		arr[8] = "Jamón";
+	}
+	catch (std::exception& e){
+		std::cerr << e.what() << std::endl;
+	}
 	arr.printArray();
 	newarr.printArray();
 	return 0;
