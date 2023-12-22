@@ -56,13 +56,8 @@ class Array{
 				std::cout << i << ": \'" << this->arr[i] << "\'" << std::endl;
 		}
 		void	setArrIndex(const T& temp, int index){
-			try{
-				if (index >= this->size())
-					throw IndexTooHigh();
-			}
-			catch (std::exception& e){
-				std:: cerr << e.what() << std::endl;
-			}
+			if (index >= this->size())
+				throw IndexTooHigh();
 			this->arr[index] = temp;
 		}
 
