@@ -17,16 +17,16 @@
 # include <iostream>
 
 template<typename T>
-void	addA(T& element, size_t i){
-	element[i] += 'a';
-	std::cout << element[i] << std::endl;
+void	addA(T& element){
+	element += 'a';
+	std::cout << element << std::endl;
 	return;
 };
 
 template<typename T>
-void	iter(T& arr, size_t len, void (*f)(T&, size_t)){
+void	iter(T* arr, size_t len, void (*f)(T&)){
 	for (size_t i = 0; i < len; i++){
-		(*f)(arr, i);
+		(*f)(arr[i]);
 	}
 };
 
