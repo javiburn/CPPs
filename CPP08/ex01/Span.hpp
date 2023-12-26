@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:27:04 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/26 15:58:00 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/26 16:53:53 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Span{
 		int				longestSpan(void);
 		int				shortestSpan(void);
 		unsigned int	getSize(void);
+		void			printVector(void);
 		class NumberTooHigh: public std::exception{
 			const char *what() const throw();
 		};

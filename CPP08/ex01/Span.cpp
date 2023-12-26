@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:48:22 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/26 16:43:38 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/26 17:00:18 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void 	Span::addNumber(int num){
 	if (idx >= static_cast<int>(this->size))
 		throw ArrayFull();
 	this->vector->push_back(num);
+	this->vector->erase(this->vector->begin());
 	this->added += 1;
 	return;
 }
@@ -69,6 +70,13 @@ int	Span::longestSpan(void){
 	std::vector<int>::iterator min = std::min_element(this->vector->begin() + this->size - this->added, this->vector->end());
 	std::vector<int>::iterator max = std::max_element(this->vector->begin() + this->size - this->added, this->vector->end());
 	return *max - *min;
+}
+
+void	Span::printVector(void){
+	std::cout << "_____________" << std::endl;
+	for (std::vector<int>::iterator it = this->vector->begin() + this->size - this->added; it != this->vector->end(); it++)
+		std::cout << *it << std::endl;
+	std::cout << "_____________" << std::endl;
 }
 
 int	Span::shortestSpan(void){
