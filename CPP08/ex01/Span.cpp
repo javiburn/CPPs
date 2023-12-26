@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:48:22 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/26 16:41:56 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/26 16:43:38 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int	Span::shortestSpan(void){
 		throw ArrayOnlyValue();
 	std::sort(this->vector->begin() + this->size - this->added, this->vector->end());
 	for (std::vector<int>::iterator it = this->vector->begin() + this->size - this->added; it != this->vector->end(); it++){
-		std::cout << "it: " << *it << ", it + 1: " << *(it + 1) << std::endl;
 		if (*it != 0 && it + 1 != this->vector->end() && abs(*it - (*(it + 1))) < dif)
 			dif = abs(*it - *(it + 1));
 	}
