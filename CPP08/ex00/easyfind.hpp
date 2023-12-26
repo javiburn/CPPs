@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:35:25 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/22 16:07:13 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/26 12:18:03 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <iomanip>
 # include <vector>
+# include <deque>
 # include <exception>
 
 template <typename T>
