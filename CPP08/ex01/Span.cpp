@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:48:22 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/26 16:24:27 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/26 16:41:56 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int	Span::longestSpan(void){
 		throw ArrayEmpty();
 	if (idx == 1)
 		throw ArrayOnlyValue();
-	std::vector<int>::iterator min = std::min_element(this->vector->begin() + 10 - this->added, this->vector->end());
-	std::vector<int>::iterator max = std::max_element(this->vector->begin() + 10 - this->added, this->vector->end());
+	std::vector<int>::iterator min = std::min_element(this->vector->begin() + this->size - this->added, this->vector->end());
+	std::vector<int>::iterator max = std::max_element(this->vector->begin() + this->size - this->added, this->vector->end());
 	return *max - *min;
 }
 
@@ -78,8 +78,8 @@ int	Span::shortestSpan(void){
 		throw ArrayEmpty();
 	if (this->added == 1)
 		throw ArrayOnlyValue();
-	std::sort(this->vector->begin() + 10 - this->added, this->vector->end());
-	for (std::vector<int>::iterator it = this->vector->begin() + 10 - this->added; it != this->vector->end(); it++){
+	std::sort(this->vector->begin() + this->size - this->added, this->vector->end());
+	for (std::vector<int>::iterator it = this->vector->begin() + this->size - this->added; it != this->vector->end(); it++){
 		std::cout << "it: " << *it << ", it + 1: " << *(it + 1) << std::endl;
 		if (*it != 0 && it + 1 != this->vector->end() && abs(*it - (*(it + 1))) < dif)
 			dif = abs(*it - *(it + 1));
