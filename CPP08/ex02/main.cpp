@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:11:37 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/26 17:15:48 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:46:23 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main()
 	--it;
 	while (it != ite)
 	{
-	std::cout << *it << std::endl;
+	std::cout << it << std::endl;
 	++it;
 	}
 	std::stack<int> s(mstack);
