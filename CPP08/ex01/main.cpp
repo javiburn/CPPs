@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:53:09 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/26 17:00:54 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/28 17:38:28 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,13 @@ int main(){
 	int n = 10;
 	srand(time(NULL));
 	Span sp = Span(n);
-	for (int i = 0; i < n; i++){
-		sp.addNumber(rand() % 500);
+	try{
+		for (int i = 0; i < n + 2; i++){
+			sp.addNumber(rand() % 500);
+		}
+	}
+	catch(std::exception& e){
+		std::cerr << e.what() << std::endl;
 	}
 	sp.printVector();
 	std::cout << sp.shortestSpan() << std::endl;
