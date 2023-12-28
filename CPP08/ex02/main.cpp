@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:11:37 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/27 18:12:49 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/28 13:08:00 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,10 @@ int main()
 	mstack.push(737);
 	//[...]
 	mstack.push(0);
-	std::cout << "size: " << mstack.stack[4] << std::endl;
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
 	--it;
-	std::cout << *it << std::endl;
-	std::cout << *ite << std::endl;
 	while (it != ite)
 	{
 	std::cout << *it << std::endl;
