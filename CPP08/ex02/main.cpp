@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:11:37 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/28 13:08:00 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/28 17:59:50 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int main()
 // 	std::list<int> mstack;
 // 	mstack.push_back(5);
 // 	mstack.push_back(17);
-// 	std::cout << mstack.front() << std::endl;
-// 	mstack.pop_front();
+// 	std::cout << mstack.back() << std::endl;
+// 	mstack.pop_back();
 // 	std::cout << mstack.size() << std::endl;
 // 	mstack.push_back(3);
 // 	mstack.push_back(5);
