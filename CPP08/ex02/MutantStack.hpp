@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:12:15 by jsarabia          #+#    #+#             */
-/*   Updated: 2023/12/28 17:50:22 by jsarabia         ###   ########.fr       */
+/*   Updated: 2023/12/29 17:45:28 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ class MutantStack: public std::stack<T>{
 				this->stack[it] = mutant.stack[it];
 			return *this;
 		};
+		int& operator[](int i){
+			return this->stack[i];
+		};
 		~MutantStack(void){
 			delete this->stack;
 		};
@@ -49,6 +52,22 @@ class MutantStack: public std::stack<T>{
 		};
 		iterator	end(void){
 			return this->c.end();
+		};
+		void	printStack(void){
+			iterator it = this->begin();
+ 			iterator ite = this->end();
+			std::cout << "STACK:" << std::endl;
+			while (it != ite)
+			{
+				--ite;
+				if (ite == this->end() - 1)
+					std::cout << *ite << "    --------> Top of the stack (last element introduced)" << std::endl;
+				else if (ite == it)
+					std::cout << *ite << "    --------> Bottom of the stack (first element introduced)" << std::endl;
+				else
+					std::cout << *ite << std::endl;
+			}
+			std::cout << "END OF STACK." << std::endl;
 		};
 };
 
