@@ -6,7 +6,7 @@
 #    By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/26 17:09:50 by jsarabia          #+#    #+#              #
-#    Updated: 2023/12/26 17:11:31 by jsarabia         ###   ########.fr        #
+#    Updated: 2023/12/29 17:06:11 by jsarabia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ clean:
 	@printf "Objects removed\n"
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 	@printf "$(NAME) removed\n"
 
 re: fclean all
