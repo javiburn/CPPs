@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:13:49 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/08 12:34:15 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:16:44 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 
 # include <iostream>
 # include <fstream>
+# include <string>
 # include <map>
+# include <time.h>
+
+class BitcoinExchange{
+	private:
+		BitcoinExchange(void);
+		BitcoinExchange(const BitcoinExchange& bit);
+		BitcoinExchange& operator=(const BitcoinExchange& bit);
+	public:
+		~BitcoinExchange(void);
+		static void	exchangeBitcoin(std::map<std::string, double> datacsv, std::string date, double num);
+};
 
 #endif

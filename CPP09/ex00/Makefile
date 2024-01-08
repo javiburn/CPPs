@@ -6,13 +6,14 @@
 #    By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/08 11:12:30 by jsarabia          #+#    #+#              #
-#    Updated: 2024/01/08 12:54:22 by jsarabia         ###   ########.fr        #
+#    Updated: 2024/01/08 15:29:46 by jsarabia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = btc
 
 SRC =	main.cpp \
+		BitcoinExchange.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
