@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:51:08 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/09 15:06:53 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:06:04 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void RPN::polishNotation(char *str){
 			else
 				stack = operate(stack, token[0]);
 		}
-		else if (thisNum == 0 && *endptr != '\0'){
+		else if ((thisNum == 0 && *endptr != '\0') || toComp.find(".") < toComp.length()){
 			std::cerr << "Error" << std::endl;
 			return;
 		}
