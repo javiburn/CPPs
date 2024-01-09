@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/09 18:42:39 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:57:33 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,30 @@ void	PMergeMe::printList(std::list<int> mylist){
 		std::cout << *it << std::endl;
 }
 
+void	orderVectors(std::vector<int> *small, std::vector<int> *large){
+	std::vector<int>::iterator ite = large->end();
+	for (std::vector<int>::iterator it = small->end() - 1; it != small->begin(); it--){
+		std::cout << "pre it: " <<  *it << std::endl;
+		it = small->end() - 1;
+		while (*it > *(--it)){
+			it--;
+		}
+		if (std::is_sorted(small->begin(), small->end()))
+			break;
+		while (it != small->begin() && *it < *(--it)){
+			--ite;
+			small->push_back(*it);
+			small->erase(it);
+			large->push_back(*ite);
+			large->erase(ite);
+			printVector(*small);
+			std::cout << "it: " <<  *it << std::endl;
+			std::cout << "back: " <<  small->back() << std::endl;
+			//exit(0);
+		}
+	}
+}
+
 void	PMergeMe::magicMerger(std::list<int> mylist){
 	std::vector<int>	small;
 	std::vector<int>	large;
@@ -63,9 +87,11 @@ void	PMergeMe::magicMerger(std::list<int> mylist){
 		aux = *max;
 		large.push_back(aux);
 	}
-	printList(mylist);
-	std::cout << "_______" << std::endl;
+	//printList(mylist);
 	printVector(small);
+	std::cout << "_______" << std::endl;
+	orderVectors(&small, &large);
+	std::cout << "_______" << std::endl << std::endl << std::endl;
 	/*for (std::vector<int>::iterator it = small.begin(); it != small.end(); it++){
 		if (it++ == mylist.end())
 	}
