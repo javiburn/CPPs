@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/09 18:30:32 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:42:39 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	PMergeMe::magicMerger(std::list<int> mylist){
 	}
 	for (std::list<int>::iterator it = mylist.begin(); it != mylist.end(); it++){
 		std::vector<int>	temp;
-		std::cout << "now: " << *it << " , end: " << *mylist.end() << std::endl;
 		temp.push_back(*it);
 		temp.push_back(*(++it));
 		if (it == mylist.end()){
