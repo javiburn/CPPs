@@ -41,27 +41,31 @@ void	PMergeMe::printList(std::list<int> mylist){
 }
 
 void	orderVectors(std::vector<int> *small, std::vector<int> *large){
-	std::vector<int>::iterator ite = large->end();
-	for (std::vector<int>::iterator it = small->end() - 1; it != small->begin(); it--){
-		std::cout << "pre it: " <<  *it << std::endl;
+	for (std::vector<int>::iterator it = small->end(); it != small->begin(); it--){
+		std::vector<int>::iterator ite = large->end() - 1;
 		it = small->end() - 1;
-		while (*it > *(--it)){
-			it--;
-		}
-		if (std::is_sorted(small->begin(), small->end()))
-			break;
-		while (it != small->begin() && *it < *(--it)){
+		std::vector<int>::iterator auxsmall = it - 1;
+		std::vector<int>::iterator auxlarge = ite - 1;
+		std::cout << "pre it: " <<  *it << std::endl;
+		while (it != small->begin() && *it > *auxsmall){
+			--it;
+			--auxsmall;
 			--ite;
-			small->push_back(*it);
-			small->erase(it);
-			large->push_back(*ite);
-			large->erase(ite);
-			printVector(*small);
+			--auxlarge;
+		}
+		std::cout << "pre it: " <<  *it << std::endl;
+		std::cout << "small begin: " <<  *small->begin() << std::endl;
+		if (it == small->begin())
+			break;
+		while (it != small->begin() && *it < *auxsmall){
+			std::swap(*it, *auxsmall);
+			std::swap(*ite, *auxlarge);
 			std::cout << "it: " <<  *it << std::endl;
 			std::cout << "back: " <<  small->back() << std::endl;
 			//exit(0);
 		}
 	}
+	printVector(*small);
 }
 
 void	PMergeMe::magicMerger(std::list<int> mylist){
@@ -80,10 +84,10 @@ void	PMergeMe::magicMerger(std::list<int> mylist){
 			large.push_back(*(it));
 			break;
 		}
-		std::vector<int>::iterator min = std::min_element(std::begin(temp), std::end(temp));
+		std::vector<int>::iterator min = std::min_element(temp.begin(), temp.end());
 		int aux = *min;
 		small.push_back(aux);
-		std::vector<int>::iterator max = std::max_element(std::begin(temp), std::end(temp));
+		std::vector<int>::iterator max = std::max_element(temp.begin(), temp.end());
 		aux = *max;
 		large.push_back(aux);
 	}
