@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/10 15:47:30 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:48:38 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ PMergeMe::~PMergeMe(void){
 
 void	printResultVector(std::vector<int> myvector){
 	std::cout << "After: ";
-	for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
+	for (std::vector<int>::reverse_iterator it = myvector.rbegin(); it != myvector.rend(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 }
 
 void	PMergeMe::printBeforeVector(std::vector<int> myvector){
 	std::cout << "Before: ";
-	for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
+	for (std::vector<int>::reverse_iterator it = myvector.rbegin(); it != myvector.rend(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 }
