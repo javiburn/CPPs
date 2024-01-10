@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/10 16:39:28 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:00:00 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,31 +45,36 @@ void	PMergeMe::printBeforeVector(std::vector<int> myvector){
 }
 
 void	pushLarge(std::vector<int> *small, std::vector<int> *large){
-	unsigned long aux = small->size();
+	std::vector<int>::iterator ite = large->begin();
+	int i = 0;
 
-	for (unsigned long i = 0; i < large->size(); i++){
-		std::vector<int>::iterator it = small->end() - i - 1;
-		std::vector<int>::iterator ite = large->end() - i - 1;
-		std::vector<int>::iterator otheraux = it;
-		std::cout << "NUM: " << *(it) << std::endl;
-		if (i < aux)
-			small->insert(it + 1, *ite);
-		else
-			small->insert(small->end(), large->back());
-		std::cout << "Now: " << *(it) << std::endl;
-		if (i == 4)
-			return ;
-		while (it != small->begin() && *(otheraux) < *(std::prev(otheraux))){
-			std::cout << "JAJAJAJA" << std::endl;
-			std::iter_swap(otheraux, std::prev(otheraux));
-			--otheraux;
+	for (std::vector<int>::iterator it = small->begin(); it != small->end(); it++){
+		i++;
+		std::cout << "_______" << std::endl;
+		printResultVector(*small);
+		std::vector<int>::iterator it2 = it;
+		std::vector<int>::iterator ite2 = ite;
+		small->push_back(*(++ite2));
+		std::vector<int>::iterator last = small->end();
+		it2 = small->insert(it + 1, *last);
+		small->pop_back();
+		std::cout << "num: " << *it2 << std::endl;
+		std::cout << "real num: " << *ite << std::endl;
+		std::cout << "prev: " << *(std::next(it2)) << std::endl;
+		while (it2 != small->begin() && *(it2) > *(std::next(it2))){
+			std::cout << "?????" << std::endl;
+			std::iter_swap(std::next(it2), it2);
+			it2++;
 		}
+		printResultVector(*small);
+		if (i == 4)
+			exit(0);
 	}
 }
 
 void orderVectors(std::vector<int> *small, std::vector<int> *large)
 {
-	std::vector<int>::iterator ite = large->begin();;
+	std::vector<int>::iterator ite = large->begin();
 
 	for (std::vector<int>::iterator it = small->begin(); it != small->end(); it++)
 	{
@@ -84,6 +89,7 @@ void orderVectors(std::vector<int> *small, std::vector<int> *large)
 		}
 		ite++;
 	}
+	printResultVector(*small);
 	pushLarge(small, large);
 }
 
