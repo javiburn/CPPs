@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/10 15:55:52 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:59:23 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	orderVectors(std::vector<int> *small, std::vector<int> *large){
 		}
 		ite++;
 	}
-	printResultVector(*small);
 	pushLarge(small, large);
 }
 
