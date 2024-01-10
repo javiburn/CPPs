@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/10 13:33:28 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:37:23 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,18 @@ PMergeMe::~PMergeMe(void){
 	return;
 }
 
-void	printVector(std::vector<int> myvector){
+void	printResultVector(std::vector<int> myvector){
+	std::cout << "After: ";
 	for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
-		std::cout << *it << std::endl;
+		std::cout << *it << " ";
+	std::cout << std::endl;
 }
 
-void	PMergeMe::printList(std::list<int> mylist){
+void	PMergeMe::printBeforeList(std::list<int> mylist){
+	std::cout << "Before: ";
 	for (std::list<int>::iterator it = mylist.begin(); it != mylist.end(); it++)
-		std::cout << *it << std::endl;
+		std::cout << *it << " ";
+	std::cout << std::endl;
 }
 
 void	pushLarge(std::vector<int> *small, std::vector<int> *large){
@@ -80,7 +84,6 @@ void	orderVectors(std::vector<int> *small, std::vector<int> *large){
 			std::swap(*ite, *auxlarge);
 		}
 	}
-	printVector(*small);
 	pushLarge(small, large);
 }
 
@@ -107,9 +110,7 @@ void	PMergeMe::magicMerger(std::list<int> mylist){
 		aux = *max;
 		large.push_back(aux);
 	}
-	printList(mylist);
-	std::cout << "_______" << std::endl;
+	printBeforeList(mylist);
 	orderVectors(&small, &large);
-	std::cout << "_______" << std::endl << std::endl << std::endl;
-	printVector(small);
+	printResultVector(small);
 }

@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:07:55 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/09 19:10:57 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:35:02 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class PMergeMe{
 	public:
 		~PMergeMe(void);
 		static void	magicMerger(std::list<int> mylist);
-		static void	printList(std::list<int> mylist);
+		static void	printBeforeList(std::list<int> mylist);
 };
 
 #endif
