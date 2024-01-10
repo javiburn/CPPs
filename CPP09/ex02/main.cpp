@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:06:22 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/09 17:21:54 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:46:06 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int main(const int argc, char **argv)
 		std::cerr << "Error" << std::endl;
 		return 1;
 	}
-	std::list<int> mylist;
+	std::vector<int> myvector;
 	for (int i = 1; i < argc; i++){
-		mylist.push_back(std::atof(argv[i]));
+		myvector.push_back(std::atof(argv[i]));
 	}
-	PMergeMe::magicMerger(mylist);
+	PMergeMe::magicMerger(myvector);
 	return 0;
 }

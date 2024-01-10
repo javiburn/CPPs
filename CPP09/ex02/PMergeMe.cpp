@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/10 13:37:23 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:47:30 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	printResultVector(std::vector<int> myvector){
 	std::cout << std::endl;
 }
 
-void	PMergeMe::printBeforeList(std::list<int> mylist){
+void	PMergeMe::printBeforeVector(std::vector<int> myvector){
 	std::cout << "Before: ";
-	for (std::list<int>::iterator it = mylist.begin(); it != mylist.end(); it++)
+	for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 }
@@ -71,7 +71,7 @@ void	orderVectors(std::vector<int> *small, std::vector<int> *large){
 		ite = large->begin();
 		std::vector<int>::iterator auxsmall = it + 1;
 		std::vector<int>::iterator auxlarge = ite + 1;
-		while (*it > *auxsmall){
+		while (*it >= *auxsmall){
 			if (it == small->end() - 1)
 				break;
 			++it;
@@ -87,20 +87,20 @@ void	orderVectors(std::vector<int> *small, std::vector<int> *large){
 	pushLarge(small, large);
 }
 
-void	PMergeMe::magicMerger(std::list<int> mylist){
+void	PMergeMe::magicMerger(std::vector<int> myvector){
 	std::vector<int>	small;
 	std::vector<int>	large;
 
-	if (mylist.size() < 2){
-		std::cout << *mylist.begin() << std::endl;
+	if (myvector.size() < 2){
+		std::cout << *myvector.begin() << std::endl;
 		return;
 	}
-	for (std::list<int>::iterator it = mylist.begin(); it != mylist.end(); it++){
+	for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++){
 		std::vector<int>	temp;
 		temp.push_back(*it);
 		temp.push_back(*(++it));
-		if (it == mylist.end()){
-			large.push_back(*(it));
+		if (it == myvector.end()){
+			large.push_back(*(it - 1));
 			break;
 		}
 		std::vector<int>::iterator min = std::min_element(temp.begin(), temp.end());
@@ -110,7 +110,7 @@ void	PMergeMe::magicMerger(std::list<int> mylist){
 		aux = *max;
 		large.push_back(aux);
 	}
-	printBeforeList(mylist);
+	printBeforeVector(myvector);
+	printResultVector(large);
 	orderVectors(&small, &large);
-	printResultVector(small);
 }
