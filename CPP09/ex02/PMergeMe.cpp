@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/10 15:59:23 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:39:28 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ PMergeMe::~PMergeMe(void){
 
 void	printResultVector(std::vector<int> myvector){
 	std::cout << "After: ";
-	for (std::vector<int>::reverse_iterator it = myvector.rbegin(); it != myvector.rend(); it++)
+	for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 }
 
 void	PMergeMe::printBeforeVector(std::vector<int> myvector){
 	std::cout << "Before: ";
-	for (std::vector<int>::reverse_iterator it = myvector.rbegin(); it != myvector.rend(); it++)
+	for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 }
@@ -48,34 +48,39 @@ void	pushLarge(std::vector<int> *small, std::vector<int> *large){
 	unsigned long aux = small->size();
 
 	for (unsigned long i = 0; i < large->size(); i++){
-		std::vector<int>::iterator it = small->begin() + i;
-		std::vector<int>::iterator ite = large->begin();
+		std::vector<int>::iterator it = small->end() - i - 1;
+		std::vector<int>::iterator ite = large->end() - i - 1;
+		std::vector<int>::iterator otheraux = it;
+		std::cout << "NUM: " << *(it) << std::endl;
 		if (i < aux)
-			small->insert(it + i, *(ite + i));
+			small->insert(it + 1, *ite);
 		else
-			small->insert(small->end() - 1, *(large->end()));
-		it = small->begin() + i;
-		while (it + i != small->begin() && *(it + i) > *(it + i - 1)){
-			std::swap(*(it + i - 1), *(it + i));
-			if ((it + i - 1) != small->begin())
-				--it;
+			small->insert(small->end(), large->back());
+		std::cout << "Now: " << *(it) << std::endl;
+		if (i == 4)
+			return ;
+		while (it != small->begin() && *(otheraux) < *(std::prev(otheraux))){
+			std::cout << "JAJAJAJA" << std::endl;
+			std::iter_swap(otheraux, std::prev(otheraux));
+			--otheraux;
 		}
 	}
 }
 
-void	orderVectors(std::vector<int> *small, std::vector<int> *large){
-	std::vector<int>::iterator ite = large->begin();
+void orderVectors(std::vector<int> *small, std::vector<int> *large)
+{
+	std::vector<int>::iterator ite = large->begin();;
 
-	for (std::vector<int>::iterator it = small->begin(); it != small->end(); it++){
-		std::vector<int>::iterator auxsmall = it + 1;
-		std::vector<int>::iterator auxlarge = ite + 1;
-		while (*it < *auxsmall){
-			std::iter_swap(it, auxsmall);
-			std::iter_swap(ite, auxlarge);
-			if (auxsmall != small->end()){
-				++auxsmall;
-				++auxlarge;
-			}
+	for (std::vector<int>::iterator it = small->begin(); it != small->end(); it++)
+	{
+		std::vector<int>::iterator it2 = it;
+		std::vector<int>::iterator ite2 = ite;
+		while (it2 != small->begin() && *std::prev(it2) > *it2)
+		{
+			std::iter_swap(it2, std::prev(it2));
+			std::iter_swap(ite2, std::prev(ite2));
+			it2--;
+			ite2--;
 		}
 		ite++;
 	}
