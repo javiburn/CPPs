@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/10 12:24:58 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:33:28 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,23 @@ void	pushLarge(std::vector<int> *small, std::vector<int> *large){
 	unsigned long aux = small->size();
 
 	for (unsigned long i = 0; i < large->size(); i++){
-		std::vector<int>::iterator it = small->begin();
+		std::vector<int>::iterator it = small->begin() + i;
 		std::vector<int>::iterator ite = large->begin();
 		if (i < aux)
-			small->insert(it + i + 1, *(ite + i));
+			small->insert(it + i, *(ite + i));
 		else
-			small->insert(small->begin(), *(large->end()));
-		while (*(ite + i) > *(it + i + 1)){
-			std::swap(*it, *(it + 1));
-			printVector(*small);
-			exit(0);
+			small->insert(small->end() - 1, *(large->end()));
+		it = small->begin() + i;
+		while (it + i != small->begin() && *(it + i) > *(it + i - 1)){
+			std::swap(*(it + i - 1), *(it + i));
+			if ((it + i - 1) != small->begin())
+				--it;
 		}
 	}
 }
 
 void	orderVectors(std::vector<int> *small, std::vector<int> *large){
 	std::vector<int>::iterator ite = large->begin();
-	//std::vector<int>::iterator aux = large->end();
 
 	for (std::vector<int>::iterator it = small->begin(); it != small->end(); it++){
 		it = small->begin();
@@ -81,7 +81,6 @@ void	orderVectors(std::vector<int> *small, std::vector<int> *large){
 		}
 	}
 	printVector(*small);
-	exit(0);
 	pushLarge(small, large);
 }
 
@@ -112,11 +111,5 @@ void	PMergeMe::magicMerger(std::list<int> mylist){
 	std::cout << "_______" << std::endl;
 	orderVectors(&small, &large);
 	std::cout << "_______" << std::endl << std::endl << std::endl;
-	//printVector(small);
-	/*for (std::vector<int>::iterator it = small.begin(); it != small.end(); it++){
-		if (it++ == mylist.end())
-	}
-	printList(mylist);
-	std::cout << "_______" << std::endl;
-	printVector(small);*/
+	printVector(small);
 }
