@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/10 15:48:38 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:55:52 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,19 @@ void	orderVectors(std::vector<int> *small, std::vector<int> *large){
 	std::vector<int>::iterator ite = large->begin();
 
 	for (std::vector<int>::iterator it = small->begin(); it != small->end(); it++){
-		it = small->begin();
-		ite = large->begin();
 		std::vector<int>::iterator auxsmall = it + 1;
 		std::vector<int>::iterator auxlarge = ite + 1;
-		while (*it >= *auxsmall){
-			if (it == small->end() - 1)
-				break;
-			++it;
-			++auxsmall;
-			++ite;
-			++auxlarge;
-		}
 		while (*it < *auxsmall){
-			std::swap(*it, *auxsmall);
-			std::swap(*ite, *auxlarge);
+			std::iter_swap(it, auxsmall);
+			std::iter_swap(ite, auxlarge);
+			if (auxsmall != small->end()){
+				++auxsmall;
+				++auxlarge;
+			}
 		}
+		ite++;
 	}
+	printResultVector(*small);
 	pushLarge(small, large);
 }
 
@@ -111,6 +107,6 @@ void	PMergeMe::magicMerger(std::vector<int> myvector){
 		large.push_back(aux);
 	}
 	printBeforeVector(myvector);
-	printResultVector(large);
 	orderVectors(&small, &large);
+	printResultVector(small);
 }
