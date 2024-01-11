@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/10 19:00:00 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:36:47 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,35 +44,27 @@ void	PMergeMe::printBeforeVector(std::vector<int> myvector){
 	std::cout << std::endl;
 }
 
-void	pushLarge(std::vector<int> *small, std::vector<int> *large){
+void	pushLarge(std::vector<int> *small, std::vector<int> *large, std::vector<int> *newvector){
 	std::vector<int>::iterator ite = large->begin();
-	int i = 0;
 
 	for (std::vector<int>::iterator it = small->begin(); it != small->end(); it++){
-		i++;
-		std::cout << "_______" << std::endl;
-		printResultVector(*small);
-		std::vector<int>::iterator it2 = it;
-		std::vector<int>::iterator ite2 = ite;
-		small->push_back(*(++ite2));
-		std::vector<int>::iterator last = small->end();
-		it2 = small->insert(it + 1, *last);
-		small->pop_back();
-		std::cout << "num: " << *it2 << std::endl;
-		std::cout << "real num: " << *ite << std::endl;
-		std::cout << "prev: " << *(std::next(it2)) << std::endl;
-		while (it2 != small->begin() && *(it2) > *(std::next(it2))){
-			std::cout << "?????" << std::endl;
-			std::iter_swap(std::next(it2), it2);
-			it2++;
+		newvector->push_back(*it);
+		std::vector<int>::iterator it2 = newvector->end() - 1;
+		newvector->push_back(*ite);
+		while (it2 != small->begin() && *it2 < *(it2 - 1)){
+			std::iter_swap(it2, it2 - 1);
+			it2--;
 		}
-		printResultVector(*small);
-		if (i == 4)
-			exit(0);
+		it2 = newvector->end() - 1;
+		while (it2 != small->begin() && *it2 < *(it2 - 1)){
+			std::iter_swap(it2, it2 - 1);
+			it2--;
+		}
+		ite++;
 	}
 }
 
-void orderVectors(std::vector<int> *small, std::vector<int> *large)
+void orderVectors(std::vector<int> *small, std::vector<int> *large, std::vector<int> *newvector)
 {
 	std::vector<int>::iterator ite = large->begin();
 
@@ -80,22 +72,22 @@ void orderVectors(std::vector<int> *small, std::vector<int> *large)
 	{
 		std::vector<int>::iterator it2 = it;
 		std::vector<int>::iterator ite2 = ite;
-		while (it2 != small->begin() && *std::prev(it2) > *it2)
+		while (it2 != small->begin() && *(it2 - 1) > *it2)
 		{
-			std::iter_swap(it2, std::prev(it2));
-			std::iter_swap(ite2, std::prev(ite2));
+			std::iter_swap(it2, it2 - 1);
+			std::iter_swap(ite2, ite2 - 1);
 			it2--;
 			ite2--;
 		}
 		ite++;
 	}
-	printResultVector(*small);
-	pushLarge(small, large);
+	pushLarge(small, large, newvector);
 }
 
 void	PMergeMe::magicMerger(std::vector<int> myvector){
 	std::vector<int>	small;
 	std::vector<int>	large;
+	std::vector<int>	newvector;
 
 	if (myvector.size() < 2){
 		std::cout << *myvector.begin() << std::endl;
@@ -117,6 +109,6 @@ void	PMergeMe::magicMerger(std::vector<int> myvector){
 		large.push_back(aux);
 	}
 	printBeforeVector(myvector);
-	orderVectors(&small, &large);
-	printResultVector(small);
+	orderVectors(&small, &large, &newvector);
+	printResultVector(newvector);
 }
