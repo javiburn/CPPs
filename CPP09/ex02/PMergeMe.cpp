@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/11 13:29:29 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:38:52 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	PMergeMe::printBeforeVector(std::vector<int> myvector){
 }
 
 void	printTime(int size, std::clock_t end, std::clock_t start, std::string type){
-	std::cout << "Time to process a range of " << size << " elements with std::" << type << ": " <<  ((end - start) / (double)CLOCKS_PER_SEC) << " s." << std::endl;
+	std::cout << "Time to process a range of " << size << " elements with std::" << type << ": " <<  1000 * ((end - start) / (double)CLOCKS_PER_SEC) << " ms." << std::endl;
 }
 
 void	pushLarge(std::vector<int> *small, std::vector<int> *large, std::vector<int> *newvector){
@@ -103,7 +103,11 @@ void	PMergeMe::magicMerger(std::vector<int> myvector){
 	std::vector<int>	newvector;
 
 	if (myvector.size() < 2){
-		std::cout << *myvector.begin() << std::endl;
+		printBeforeVector(myvector);
+		std::clock_t c_start = std::clock();
+		std::clock_t c_end = std::clock();
+		printResultVector(myvector);
+		printTime(myvector.size(), c_end, c_start, "vector");
 		return;
 	}
 	for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++){
@@ -195,7 +199,9 @@ void	PMergeMe::magicListMerger(std::list<int> mylist){
 	std::list<int>	newlist;
 
 	if (mylist.size() < 2){
-		std::cout << *mylist.begin() << std::endl;
+		std::clock_t c_start = std::clock();
+		std::clock_t c_end = std::clock();
+		printTime(mylist.size(), c_end, c_start, "list");
 		return;
 	}
 	for (std::list<int>::iterator it = mylist.begin(); it != mylist.end(); it++){
