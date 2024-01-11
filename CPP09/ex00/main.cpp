@@ -6,21 +6,110 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:12:56 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/08 16:57:18 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:59:16 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
+int	checkLineInput(std::string str){
+	static int count = 0;
+
+	if (str == "date | value"){
+		count++;
+		if (count > 1)
+			return 0;
+		else
+			return 1;
+	}
+	for (int i = 0; i < static_cast<int>(str.length()); i++){
+		while (i < 4){
+			if (!isdigit(str[i]))
+				return 0;
+			i++;
+		}
+		if (i == 4){
+			if (str[i] != ' ')
+				return 0;
+		}
+		i++;
+		if (i == 5){
+			if (str[i] != '|')
+				return 0;
+		}
+		i++;
+		if (i == 6){
+			if (str[i] != ' ')
+				return 0;
+		}
+		i++;
+		if (!isdigit(str[i]) && str[i] != '.')
+			return 0;
+	}
+	return 1;
+}
+
+int	checkLine(std::string str){
+	static int count = 0;
+
+	if (str.length() < 1)
+		return 1;
+	if (str == "date,exchange_rate"){
+		count++;
+		if (count > 1)
+			return 0;
+		else
+			return 1;
+	}
+	int i = 0;
+	while (i < 4){
+		if (!isdigit(str[i]) && str[i] != '0')
+			return 0;
+		i++;
+	}
+	if (i == 4){
+		if (str[i] != '-')
+			return 0;
+	}
+	i++;
+	while (i < 7){
+		if (!isdigit(str[i]) && str[i] != '0')
+			return 0;
+		i++;
+	}
+	if (i == 7){
+		if (str[i] != '-')
+			return 0;
+	}
+	i++;
+	while (i < 10){
+		if (!isdigit(str[i]) && str[i] != '0')
+			return 0;
+		i++;
+	}
+	if (i == 10){
+		if (str[i] != ',')
+			return 0;
+	}
+	i++;
+	while (i < static_cast<int>(str.length())){
+		if (!isdigit(str[i]) && str[i] != '0' && str[i] != '.')
+			return 0;
+		i++;
+	}
+	return 1;
+}
+
 void	parseInput(char *argv, std::map<std::string, double> dataParsed)
 {
-	std::string 							str;
-	std::string								num;
-	std::ifstream							input(argv);
+	std::string 	str;
+	std::string		num;
+	std::ifstream	input(argv);
 
 	while (input){
 		std::getline(input, str);
 		try{
+			checkLineInput(str);
 			num = str;
 			str.erase(str.find("|"), str.length());
 			num.erase(0, num.find("|") + 1);
@@ -45,6 +134,10 @@ std::map<std::string, double>	parseData(void)
 
 	while (datacsv){
 		std::getline(datacsv, str);
+		if (!checkLine(str)){
+			std::cerr << "Error" << std::endl;
+			exit(1);
+		}
 		try{
 			num = str;
 			str.erase(str.find(","), str.length());
