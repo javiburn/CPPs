@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/11 10:36:47 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:10:39 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,22 @@ void	PMergeMe::printBeforeVector(std::vector<int> myvector){
 
 void	pushLarge(std::vector<int> *small, std::vector<int> *large, std::vector<int> *newvector){
 	std::vector<int>::iterator ite = large->begin();
+	int i = 0;
 
 	for (std::vector<int>::iterator it = small->begin(); it != small->end(); it++){
 		newvector->push_back(*it);
 		std::vector<int>::iterator it2 = newvector->end() - 1;
+		while (it2 != newvector->begin() && *it2 < *(it2 - 1)){
+			std::iter_swap(it2, it2 - 1);
+			it2--;
+		}
 		newvector->push_back(*ite);
-		while (it2 != small->begin() && *it2 < *(it2 - 1)){
-			std::iter_swap(it2, it2 - 1);
-			it2--;
-		}
 		it2 = newvector->end() - 1;
-		while (it2 != small->begin() && *it2 < *(it2 - 1)){
+		while (it2 != newvector->begin() && *it2 < *(it2 - 1)){
 			std::iter_swap(it2, it2 - 1);
 			it2--;
 		}
+		i++;
 		ite++;
 	}
 }
