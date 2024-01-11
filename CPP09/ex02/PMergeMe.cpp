@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:07 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/11 11:58:30 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:29:29 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,15 @@ void	PMergeMe::printBeforeVector(std::vector<int> myvector){
 	std::cout << std::endl;
 }
 
-void	printTime(int size, long time, std::string type){
-	std::cout << "Time to process a range of " << size << " elements with std::" << type << ": " << time << " us (microseconds)." << std::endl;
+void	printTime(int size, std::clock_t end, std::clock_t start, std::string type){
+	std::cout << "Time to process a range of " << size << " elements with std::" << type << ": " <<  ((end - start) / (double)CLOCKS_PER_SEC) << " s." << std::endl;
 }
 
 void	pushLarge(std::vector<int> *small, std::vector<int> *large, std::vector<int> *newvector){
 	std::vector<int>::iterator ite = large->begin();
 
+	if (large->size() > small->size())
+		newvector->push_back(*(large->end() - 1));
 	for (std::vector<int>::iterator it = small->begin(); it != small->end(); it++){
 		newvector->push_back(*it);
 		std::vector<int>::iterator it2 = newvector->end() - 1;
@@ -120,18 +122,22 @@ void	PMergeMe::magicMerger(std::vector<int> myvector){
 		large.push_back(aux);
 	}
 	printBeforeVector(myvector);
-	struct timeval start, first;
-	gettimeofday(&start, NULL);
+	std::clock_t c_start = std::clock();
 	orderVectors(&small, &large, &newvector);
-	gettimeofday(&first, &start);
+	std::clock_t c_end = std::clock();
 	printResultVector(newvector);
-	printTime(myvector.size(), first.tv_usec, "vector");
+	printTime(myvector.size(), c_end, c_start, "vector");
 }
 
 
 void	pushLargeList(std::list<int> *small, std::list<int> *large, std::list<int> *newlist){
 	std::list<int>::iterator ite = large->begin();
 
+	if (large->size() > small->size()){
+		std::list<int>::iterator end = large->end();
+		--end;
+		newlist->push_back(*(end));
+	}
 	for (std::list<int>::iterator it = small->begin(); it != small->end(); it++){
 		newlist->push_back(*it);
 		std::list<int>::iterator it2 = newlist->end();
@@ -207,10 +213,9 @@ void	PMergeMe::magicListMerger(std::list<int> mylist){
 		aux = *max;
 		large.push_back(aux);
 	}
-	struct timeval start, second;
-	gettimeofday(&start, NULL);
+	std::clock_t c_start = std::clock();
 	orderLists(&small, &large, &newlist);
-	gettimeofday(&second, &start);
+	std::clock_t c_end = std::clock();
 	//printResultList(newlist);
-	printTime(mylist.size(), second.tv_usec, "list");
+	printTime(mylist.size(), c_end, c_start, "list");
 }

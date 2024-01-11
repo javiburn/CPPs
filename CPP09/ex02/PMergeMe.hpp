@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:07:55 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/11 11:35:29 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:19:07 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <vector>
 # include <algorithm>
 # include <sys/time.h>
+# include <ctime>
 
 class PMergeMe{
 	private:

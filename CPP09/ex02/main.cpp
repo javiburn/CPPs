@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:06:22 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/11 11:35:25 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:10:38 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	checkElements(int argc, char **argv)
 
 int main(const int argc, char **argv)
 {
+	if (argc < 2){
+		std::cerr << "Invalid number of arguments" << std::endl;
+		return 1;
+	}
 	if (!checkElements(argc, argv)){
 		std::cerr << "Error" << std::endl;
 		return 1;
