@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:28:19 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/09 12:43:16 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:06:32 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	BitcoinExchange::exchangeBitcoin(std::map<std::string, double> map, std::st
 	if (checkValidID(date) && checkValidValue(num)){
 		date.erase(date.begin() + date.length() - 1, date.end());
 		std::map<std::string, double>::iterator it = map.lower_bound(date);
-		std::map<std::string, double>::iterator prev = std::prev(it);
+		std::map<std::string, double>::iterator prev = it;
+		--prev;
 		if (it == map.begin())
 			std::cout << "Error: bad input => " << date << std::endl;
 		else
