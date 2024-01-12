@@ -6,11 +6,36 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:12:56 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/11 18:59:16 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:23:40 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+int	checkDate(Date date){
+	int arr[] = {1, 3, 5, 7, 8, 10, 12};
+	std::list<int> thirtyone(arr, arr + (sizeof(arr) / sizeof(arr[0])));
+	std::list<int>::iterator it = std::find(thirtyone.begin(), thirtyone.end(), date.getMonth());
+
+	if (date.getDay() > 31 || date.getDay() < 1)
+		return 0;
+	if (date.getMonth() > 12 || date.getMonth() < 1)
+		return 0;
+	if (date.getYear() < 2009 || date.getYear() > 2024)
+		return 0;
+	if (date.getMonth() == 2){
+		if (date.getDay() > 29)
+			return 0;
+		if (date.getDay() == 29)
+			if (date.getYear() % 4 != 0)
+				return 0;
+	}
+	if (date.getMonth() == 31){
+		if (*it < 1)
+			return 0;
+	}
+	return 1;
+}
 
 int	checkLineInput(std::string str){
 	static int count = 0;
@@ -46,7 +71,8 @@ int	checkLineInput(std::string str){
 		if (!isdigit(str[i]) && str[i] != '.')
 			return 0;
 	}
-	return 1;
+	Date date(std::atoi(str.substr(0, 4).c_str()), std::atoi(str.substr(5, 2).c_str()), std::atoi(str.substr(8, 2).c_str()));
+	return checkDate(date);
 }
 
 int	checkLine(std::string str){
@@ -97,7 +123,8 @@ int	checkLine(std::string str){
 			return 0;
 		i++;
 	}
-	return 1;
+	Date date(std::atoi(str.substr(0, 4).c_str()), std::atoi(str.substr(5, 2).c_str()), std::atoi(str.substr(8, 2).c_str()));
+	return checkDate(date);
 }
 
 void	parseInput(char *argv, std::map<std::string, double> dataParsed)

@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:13:49 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/08 16:16:44 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:11:41 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string>
 # include <map>
 # include <time.h>
+# include "Date.hpp"
 
 class BitcoinExchange{
 	private:
