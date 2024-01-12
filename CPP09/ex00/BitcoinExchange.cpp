@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:28:19 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/11 13:05:09 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:45:26 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,28 @@ BitcoinExchange::~BitcoinExchange(void){
 	return;
 }
 
-int	checkValidID(std::string date){
-	std::string year = date;
-	std::string month = date;
-	std::string day = date;
+int	checkDate(Date date){
+	int arr[] = {1, 3, 5, 7, 8, 10, 12};
+	std::list<int> thirtyone(arr, arr + (sizeof(arr) / sizeof(arr[0])));
+	std::list<int>::iterator it = std::find(thirtyone.begin(), thirtyone.end(), date.getMonth());
 
-	if (date[4] != '-' || date[7] != '-' || std::isdigit(date[10]))
+	if (date.getDay() > 31 || date.getDay() < 1)
 		return 0;
-	year = year.erase(4, date.length());
-	month = month.erase(7, date.length());
-	month.erase(month.begin(), month.end() - 2);
-	day.erase(day.begin(), day.end() - 3);
-	if (std::atoi(year.c_str()) < 2009 || std::atoi(year.c_str()) > 2024)
+	if (date.getMonth() > 12 || date.getMonth() < 1)
 		return 0;
-	if (std::atoi(month.c_str()) < 1 || std::atoi(month.c_str()) > 12)
+	if (date.getYear() < 2009 || date.getYear() > 2024)
 		return 0;
-	if (std::atoi(day.c_str()) < 1 || std::atoi(day.c_str()) > 31)
-		return 0;
+	if (date.getMonth() == 2){
+		if (date.getDay() > 29)
+			return 0;
+		if (date.getDay() == 29)
+			if (date.getYear() % 4 != 0)
+				return 0;
+	}
+	if (date.getMonth() == 31){
+		if (*it < 1)
+			return 0;
+	}
 	return 1;
 }
 
@@ -58,7 +63,9 @@ int	checkValidValue(double num){
 }
 
 void	BitcoinExchange::exchangeBitcoin(std::map<std::string, double> map, std::string date, double num){
-	if (checkValidID(date) && checkValidValue(num)){
+	Date dateclass(std::atoi(date.substr(0, 4).c_str()), std::atoi(date.substr(5, 2).c_str()), std::atoi(date.substr(8, 2).c_str()));
+
+	if (checkDate(dateclass) && checkValidValue(num)){
 		date.erase(date.begin() + date.length() - 1, date.end());
 		std::map<std::string, double>::iterator it = map.lower_bound(date);
 		std::map<std::string, double>::iterator prev = it;
@@ -69,7 +76,7 @@ void	BitcoinExchange::exchangeBitcoin(std::map<std::string, double> map, std::st
 		else
 			std::cout <<  date << " => " << num << " = " << prev->second * num << std::endl;
 	}
-	else if (!checkValidID(date))
+	else if (!checkDate(dateclass))
 	{
 		date.erase(date.begin() + date.length() - 1, date.end());
 		std::cout << "Error: bad input => " << date << std::endl;

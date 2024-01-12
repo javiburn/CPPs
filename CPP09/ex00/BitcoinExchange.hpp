@@ -6,7 +6,7 @@
 /*   By: jsarabia <jsarabia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:13:49 by jsarabia          #+#    #+#             */
-/*   Updated: 2024/01/12 15:11:41 by jsarabia         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:44:00 by jsarabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ class BitcoinExchange{
 		~BitcoinExchange(void);
 		static void	exchangeBitcoin(std::map<std::string, double> datacsv, std::string date, double num);
 };
+
+int	checkDate(Date date);
 
 #endif
